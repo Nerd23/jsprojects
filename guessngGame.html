@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name='author' content='sunder'/>
+	<meta charset='utf-8'/>
+	<title> Guessing Game </title>
+	<script>
+			
+			var target='';
+			var finished = false;
+			var guess_index=0;
+			var user_guess='';
+			var count =0;
+			var guess=0;
+			var colors=['red','green','blue','yellow', 'orange','black','violet'];
+
+		function do_game(){ 	//This function is called on onload event.
+
+				
+				guess_index= Math.floor(Math.random()*7);
+				target=colors[guess_index];
+			
+				while (!finished)
+				{
+					guess+=1;
+					user_guess= prompt('I am thinking of one of these colors: \r\r red, green, blue, yellow, orange, black, violet \r\r which color am I thinking of ?');
+					
+					finished = check_guess();
+				}
+		}
+
+		function check_guess(){
+
+			if(user_guess == '')
+			{
+
+				alert('You have not entered a color.\n\n' + "Please enter a color from the given list");
+				return false;
+			}
+			
+			for(var i=0;i < colors.length ; i++)
+			{
+				
+				if(user_guess !== colors[i])
+				{
+					count +=1;				
+				}
+				else
+				{
+					count=0;
+					break;
+				}
+
+			}
+
+			if(count==7)
+			{
+				alert("Sorry, I don't recognize your color.");
+				count=0;
+				return false;
+			}
+
+			if(user_guess > target)
+			{
+				alert("Sorry, your guess is not correct \r\r" + 
+					"Hint: Your Color is Alphabetically higher than mine");
+				return false;
+			}
+
+			if(user_guess<target)
+			{
+				alert("Sorry, your guess is not correct \r\r" + 
+					"Hint: Your Color is Alphabetically Lower than mine");
+				return false;
+			}
+
+			if(user_guess===target)
+			{
+				alert("Congratulations! you have guessed the color \r\r" + 
+				"It took you "+ guess +" guesses to finish the game! \r\r"+ "You can see the color in the background");
+
+				document.getElementsByTagName("body")[0].style.background= target;
+				return true;
+			}
+		}
+
+	</script>
+
+</head>
+<body onload="do_game()">
+
+
+</body>
+</html>
