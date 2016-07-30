@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset-'utf-8'>
+	<meta name='description' content='Dating Website'>
+	<meta name='keywords' content='Love Dating Girls Boys Teenagers'>
+	<meta name='author' content='Sunder'>
+	<title> Dating site</title>
+	<style>
+
+		.page-margins{
+
+			padding: 50px 50px 50px 50px;
+		}
+
+		.header{
+			padding-left:40px;
+
+		}
+
+		.fieldsetpad{
+
+			margin-bottom: 10px;
+			border: 10px solid yellow;
+			background: lightyellow;
+			width: 720px;
+		}
+
+		.labelStyles{
+			
+			width: 180px;
+			display: inline-block;
+			text-align: right;
+			vertical-align: top;
+
+		}
+
+		.textareaStyle{
+
+			width:360px;
+			height:50px;
+		}
+
+		.SalarySpan{
+
+			
+			padding: 5px 5px 5px 5px;
+			text-align: center;
+			color: white;
+			width:50px;
+			display:inline-block;
+
+		}
+
+		.leftColor{
+
+			background-color: brown;
+		}
+
+		.rightColor{
+
+			background-color:darkviolet;
+		}
+
+		.HeightSpans{
+			
+			padding: 5px 5px 5px 5px;
+		    text-align: center;
+		    color:white;
+		    width:50px;
+		    display:inline-block;
+		}
+
+		.imgpreview{
+
+			width:75px;
+			height:75px;
+		}
+		
+		label:hover{
+
+			font-size: 40px;
+		}
+
+		input:hover{
+			font-size: 40px;
+		}
+
+		.textLable{
+			width:auto;
+		}
+		
+
+
+	</style>
+
+</head>
+<body>
+
+<div class='page-margins'>
+
+<h1 class="header"> Please Enter Your Details For Our Dating Website!</h1>
+	<form action='http://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php' method='POST' enctype='multipart/form-data'>
+
+	<fieldset class='fieldsetpad'>
+			<legend>Your Face</legend>
+				<label for='myupload' class='labelStyles'> Your Image</label>
+				<input type='file' id='myupload' name='upload' required />
+				
+				<br>
+				<label for'preview' class='labelStyles'> Image Preview</label>
+				<img class='imgpreview' alt='image.jpg' id='preview'>
+	</fieldset>
+
+	<fieldset class='fieldsetpad'> 
+		<legend> Your General Details </legend>
+		<br>
+		<label for='myname' class='labelStyles'>Name:</label>
+		<input type='text' id='myname' name='name' placeholder='Enter Your Name Here' required ><br>
+		<label for='mygender' class='labelStyles selector'>Gender: </label>
+		<input type='radio'  id='mygender' name='male-female' required><label for='mygender' class="textLable">Male</label>
+		<input type='radio'  id='mygender' name='male-female' required><label for="mygender" class="textLable">Female</label>
+		<br>
+		<label for='myage' class='labelStyles'> Age: </label>
+		<input type='number' id='myage' name='age' required>
+		<br>
+		<label for='mydob' class='labelStyles'> Date of Birth: </label>
+		<input type='date' id='mydob' name='dateofbirth'> 
+		<br>
+		<label for='mycolor' class='labelStyles'> Favourite Color: </label>
+		<input type='color' id='mycolor' name='color' >
+		<br>
+		<label for='mycountry' class='labelStyles'> Which Country?</label>
+		<select id='mycountry'>
+			<option value='india'>no selection</option>
+			<option value='india'>India</option>
+			<option value='usa' >USA</option>
+			<option value='china'>China</option>
+			<option value='india'>Russia</option>
+			<option value='india'>Mexico</option>
+		</select>
+		<br>
+	</fieldset>
+
+	<fieldset class="fieldsetpad">
+		<legend> Your Indicators </legend>
+		<label for='myheight' class='labelStyles'>Height:</label> 
+		<span class='HeightSpans leftColor'> Short </span>
+		<input type='range' id='myheight' min='0' max='100' value='50' >
+		<span class='HeightSpans rightColor' > Tall </span>
+		<br>
+		<label for='myincome' class='labelStyles'> Salary: </label>
+		<span class='SalarySpan leftColor'> Poor </span>
+		<input type='range' id='myincome' min='0' max='100' value='50' >
+		<span class='SalarySpan rightColor'> Rich </span><br>
+	</fieldset>
+
+	<fieldset class="fieldsetpad">
+
+		<legend> Your Contact Information </legend>
+		<label for='myemail' class='labelStyles'> Email: </label>
+		<input type='email' id='myemail' name='email' required><br>
+		<label for='mymobile' class='labelStyles'> Mobile: </label>
+		<input type='tel' id='mymobile' name='mobile'><br>
+		<label class='labelStyles'> Address: </label>
+		<textarea class='textareaStyle'></textarea><br>
+
+		<label class='labelStyles selector' for='mycontact'> Method to contact you: </label>
+		<input type='checkbox' name='contact' id='mycontact'><label for='mycontact' class="textLable">Email</label>
+		<input type='checkbox' name='contact' id='mycontact'><label for='mycontact' class="textLable">Whats-App</label>
+		<input type='checkbox' name='contact' id="mycontact"><label for='mycontact' class="textLable">In-app chat</label>
+	</fieldset>
+
+	<input type='submit' name='submit' value='Submit'>
+</form>
+</div>
+
+</body>
+<script src="https://www.cse.ust.hk/~rossiter/dating_web_site.js"></script>
+
+
+</html>
