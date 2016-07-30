@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta  charset='utf-8'>
+	<meta name ='author' contents='sunder'>
+	<meta name='keywords' contents='javascript, matching game'>
+
+	<title> Mathing Game </title>
+
+	
+	<style>
+
+	#leftSide {
+
+		left:0px;
+		top: 150px;
+		width: 500px;
+		height: 500px;
+		display: inline-block;
+
+	}
+
+	#rightSide{        
+
+		top:150px;
+		left: 500px;
+		position: absolute;
+		width: 500px;
+		height: 500px;
+		border-left: 1px solid black;
+		display: inline-block;
+	}
+
+
+	</style>
+
+	<script>
+
+	var numberOfFaces =5;
+	var theLeftSide,theRightSide,theBody;
+
+	function generateFaces(){
+
+		
+		var count =numberOfFaces;
+		//numberOfFaces+=5;
+	var leftposition =5;
+    var top_position =125;
+   theLeftSide = document.getElementById("leftSide");
+   theRightSide = document.getElementById("rightSide");
+   theBody = document.getElementsByTagName("body")[0];
+		
+	var leftSideImage,sample;
+	
+		while(count >0)
+		{
+			count -=1;
+			//console.log(numberOfFaces);
+			top_position = 125+Math.floor(Math.random() * 400);
+			leftposition = 5+Math.floor(Math.random() * 400);
+
+			var the_image= document.createElement("img");
+			the_image.src= "http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png";
+			the_image.style.top= top_position+"px";
+			the_image.style.left= leftposition+"px";
+			the_image.style.width = 100+"px";
+			the_image.style.height =100+"px";
+			the_image.style.position = "absolute";
+			//console.log("executed");
+			theLeftSide.appendChild(the_image);
+
+		}
+		
+
+		leftSideImage = theLeftSide.cloneNode(true);
+		sample = leftSideImage.lastChild;
+		leftSideImage.removeChild(sample);
+		//console.log("Hello");
+		theRightSide.appendChild(leftSideImage);
+
+
+  		theLeftSide.lastChild.onclick = function nextLevel(event){
+
+			event.stopPropagation();
+			numberOfFaces+=5;
+			
+
+	while(theLeftSide.firstChild)
+		theLeftSide.removeChild(theLeftSide.firstChild);
+
+	while(theRightSide.firstChild)
+		theRightSide.removeChild(theRightSide.firstChild);
+
+		generateFaces();
+	};
+
+	theBody.onclick= function gameover(){
+
+		alert("Game Over!");
+		theBody.onclick = null;
+		theLeftSide.lastChild.onclick = null;
+	};
+
+	};
+
+	
+
+	</script>
+
+</head>
+<body id="thBody" onload="generateFaces()" >
+	<h3> Matching Game </h3>
+	<h4> click on the extra smiling face on the left </h4>
+	<div id='leftSide' ><img src="http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png" alt="Smily Image"/></div>
+	<div id='rightSide'></div>
+</div>
+
+
+</body>
+
+</hmtl>
