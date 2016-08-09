@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="keywords" content="weather, climate, humidity, saint petersburg, USA, America, Florida,
+                                tampa, tampa bay">
+<meta name="author" content="sunder">
+<meta name="viewport" content="width=device-width initial-scale=1">
+<title> Weather App </title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<script src="js/jquery.js"></script>
+<script>
+
+$(document).ready(function(){
+
+    var api = [];
+    pullWeather();
+
+    function pullWeather(){
+
+      $.ajax({
+     async: false,
+     type: 'GET',
+     url: 'http://api.apixu.com/v1/current.json?key=9e4e08c763ce49a5a78234211160808&q=33716',
+     success: function(data) {
+       api = data;
+      }
+    }).done(function(data){
+          console.log(api);
+         $(".metrics").text(api["current"]["temp_f"]);
+         $("img").attr('src',"https:"+api["current"]["condition"]["icon"]);
+         $(".city").text(api["location"]["name"]);
+         $(".feels").text(api["current"]["condition"]["text"]);
+         $(".wind").text(api["current"]["wind_mph"]+" mph");
+         $(".direction").text(api["current"]["wind_dir"]);
+
+        });
+      };
+});
+
+
+</script>
+
+<style>
+
+.header{
+  height:150px;
+  color: white;
+}
+
+.rowone{
+  height:200px;
+}
+
+.rowtwo{
+  height:150px;
+
+}
+
+.cityName, .feelsName, .windName{
+
+  height:90px;
+  width:200px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+  opacity:1;
+
+}
+
+.windName,.metricName{
+  padding-top:15px;
+  font-size: 2.0em;
+  font-weight: 500;
+}
+
+.metricName{
+  color:white;
+  width:150px;
+
+}
+
+.jumbotron{
+  background-color: black;
+  opacity:0.9;
+  height:725px;
+}
+
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+<div class="jumbotron">
+  <div class="row text-center header">
+
+      <h2> Local Weather Application </h2>
+
+  </div>
+  <!-- row one  -->
+  <div class="row rowone">
+
+        <div class="col-md-offset-5 col-md-1 col-xs-12">
+          <img src="" alt="image.jpeg">
+       </div>
+
+       <div class="col-md-1  metricName">
+         <span class="metrics"></span>
+         <span> F </span>
+       </div>
+
+
+  </div>
+
+<!-- row two -->
+  <div class="row rowtwo">
+
+      <div class="col-md-3 col-md-offset-2 col-xs-offset-2 cityName ">
+          <h3 class="city"></h3>
+      </div>
+
+      <div class="col-md-3  col-md-offset-1 col-xs-offset-2 feelsName">
+        <h3 class="feels"></h3>
+      </div>
+
+      <div class="col-md-3 col-md-offset-1 col-xs-offset-2 windName ">
+        <span class="wind"></span>
+        <span class="direction"></span>
+      </div>
+
+ </div>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>
